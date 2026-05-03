@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lost & Found APP</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .loading-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: center; }
+    .loading-overlay.show { display: flex; }
+    .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #435663; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .image-preview { margin-top: 10px; max-width: 200px; border-radius: 8px; display: none; }
+    .image-preview.show { display: block; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Campus Lost & Found</h1>
+    <nav>
+      <button id="homeBtn">Home</button>
+      <button id="lostBtn">Lost Items</button>
+      <button id="foundBtn">Found Items</button>
+      <button id="addBtn">Add Item</button>
+    </nav>
+  </header>
+
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+  </div>
+
+  <main id="app">
+    <!-- content injected by JS -->
+  </main>
+
+  <template id="item-card-template">
+    <article class="item-card">
+      <img class="thumb" alt="item image" />
+      <div class="card-body">
+        <h3 class="item-name"></h3>
+        <p class="meta"></p>
+        <p class="short-desc"></p>
+        <div><button class="view-btn">View Details</button></div>
+      </div>
+    </article>
+  </template>
+
+  <!-- Chat Modal -->
+  <div id="chatModal" class="chat-modal">
+    <div class="chat-container">
+      <div class="chat-header">
+        <h3 id="chatTitle">Anonymous Chat</h3>
+        <button id="closeChatBtn" class="close-btn">&times;</button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <!-- Messages will be added here -->
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Type your message..." />
+        <button id="sendMessageBtn" class="btn-primary">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <small>• Campus Lost & Found © 2025 •</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
